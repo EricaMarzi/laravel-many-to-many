@@ -139,7 +139,11 @@ class PostController extends Controller
 
         $post->update($data);
 
-
+        if (Arr::exists($data, 'tags')) {
+            $post->tags()->sync($data['tags']);
+        } elseif (!Arr::exists($data, 'tags') && count($post->tags)) {
+            $post->tags()->detach();
+        }
 
         return to_route('admin.post.show', $post)->with('message', 'Post modificato con successo')->with('type', 'success');
     }
