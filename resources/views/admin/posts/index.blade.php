@@ -26,6 +26,7 @@
             <th scope="col">Titolo</th>
             <th scope="col">Slug</th>
             <th scope="col">Categoria</th>
+            <th scope="col">Tag</th>
             <th scope="col">Stato</th>
             <th scope="col">Data creazione</th>
             <th scope="col">Ultima modifica</th>
@@ -45,8 +46,15 @@
             <td>@if($post->category)
                 <span class="badge rounded-pill" style="background-color: {{$post->category->color}}">{{$post->category->label}}</span>
                 @else
-                No Category
+                <p class="text-center">-</p>
                 @endif
+            </td>
+            <td>
+                @forelse($post->tags as $tag)
+                <span class="badge" style="background-color: {{$tag->color}}">{{$tag->label}}</span>
+                @empty
+                <p class="text-center">-</p>
+                @endforelse
             </td>
             <td>{{$post->is_published ? 'Pubblicato' : 'Bozza'}}</td>
             <td>{{$post->created_at}}</td>

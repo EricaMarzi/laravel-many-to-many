@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="form-check">
+            <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" value="" id="is_published" name="is_published" value="1" @if (old('is_published', $post->is_published)) checked @endif>
                 <label class="form-check-label" for="is_published" name="is_published">
                     Pubblica

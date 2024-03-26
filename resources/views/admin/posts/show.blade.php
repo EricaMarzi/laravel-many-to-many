@@ -6,12 +6,22 @@
 
 <header>
     <h1>{{$post->title}}</h1>
-    <div>Categoria:
+    <div class="d-flex justify-content-between">
         @if($post->category)
-        <span class="badge rounded-pill" style="background-color: {{$post->category->color}}">{{$post->category->label}}</span>
+        <div>
+            Categoria:
+            <span class="badge rounded-pill" style="background-color: {{$post->category->color}}">{{$post->category->label}}</span>
+        </div>
         @else
         No Category
         @endif
+
+        <div class="d-flex gap-2">
+            @forelse($post->tags as $tag)
+            <span class="badge" style="background-color: {{$tag->color}}">{{$tag->label}}</span>
+            @empty
+            @endforelse
+        </div>
     </div>
     <hr>
 </header>
