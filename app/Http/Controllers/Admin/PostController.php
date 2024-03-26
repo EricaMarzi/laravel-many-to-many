@@ -75,6 +75,10 @@ class PostController extends Controller
 
         $post->save();
 
+        if (Arr::exists($data, 'tags')) {
+            $post->tags()->attach($data['tags']);
+        }
+
         return to_route('admin.post.show', $post)->with('message', 'Post creato con successo')->with('type', 'success');
     }
 
