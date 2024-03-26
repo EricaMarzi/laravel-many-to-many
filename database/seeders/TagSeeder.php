@@ -30,7 +30,7 @@ class TagSeeder extends Seeder
             $new_tag->label = $tag['label'];
             $new_tag->color = $tag['color'];
 
-            $new_tag->save;
+            $new_tag->save();
         }
     }
 }
