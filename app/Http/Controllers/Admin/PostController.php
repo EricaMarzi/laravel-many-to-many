@@ -49,7 +49,8 @@ class PostController extends Controller
             'content' => 'required|string',
             'image' => 'nullable|image',
             'is_published' => 'nullable|boolean',
-            'category_id' => 'nullable|exists:categories,id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
         ], [
             'title.required' => 'Il titolo è obbligatorio',
             'title.min' => 'Il titolo deve essere almeno di :min caratteri',
@@ -57,7 +58,8 @@ class PostController extends Controller
             'title.unique' => 'Titolo già esistente',
             'image.url' => 'L\'indirizzo non è valido',
             'content.required' => 'Il contenuto è obbligatorio',
-            'category_id.exists' => 'Categoria non valida'
+            'category_id.exists' => 'Categoria non valida',
+            'tags.exists' => 'Tag non validi'
         ]);
 
         $data = $request->all();
@@ -104,7 +106,8 @@ class PostController extends Controller
             'content' => 'required|string',
             'image' => 'nullable|image',
             'is_published' => 'nullable|boolean',
-            'category_id' => 'nullable|exists:categories,id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
         ], [
             'title.required' => 'Il titolo è obbligatorio',
             'title.min' => 'Il titolo deve essere almeno di :min caratteri',
@@ -112,7 +115,8 @@ class PostController extends Controller
             'title.unique' => 'Titolo già esistente',
             'image.url' => 'L\'indirizzo non è valido',
             'content.required' => 'Il contenuto è obbligatorio',
-            'category_id.exists' => 'Categoria non valida'
+            'category_id.exists' => 'Categoria non valida',
+            'tags.exists' => 'Tag non validi'
         ]);
 
         $data = $request->all();
