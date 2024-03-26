@@ -46,7 +46,15 @@
                 <img src="{{old('image', $post->image ?? 'https://marcolanci.it/boolean/assets/placeholder.png')}}" class="img-fluid" alt="Img post" id="preview">
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-10">
+            @foreach($tags as $tag)
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="tags[]" id='{{"tag-$tag->id"}}' value="{{$tag->id}}" @if (in_array($tag->id, old('tags', []))) checked @endif>
+                <label class="form-check-label" for='{{"tag-$tag->id"}}'>{{$tag->label}}</label>
+            </div>
+            @endforeach
+        </div>
+        <div class="col-2">
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" value="" id="is_published" name="is_published" value="1" @if (old('is_published', $post->is_published)) checked @endif>
                 <label class="form-check-label" for="is_published" name="is_published">
