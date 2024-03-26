@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'lena@email.it',
         ]);
 
-        $this->call(CategorySeeder::class);
+        $this->call([CategorySeeder::class, TagSeeder::class]);
         \App\Models\Post::factory(30)->create();
     }
 }
