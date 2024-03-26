@@ -95,9 +95,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $prev_tags = $post->tags->pluck('id')->toArray();
+
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin\posts\edit', compact('post', 'categories', 'tags'));
+        return view('admin\posts\edit', compact('post', 'categories', 'tags', 'prev_tags'));
     }
 
     /**
@@ -136,6 +138,8 @@ class PostController extends Controller
         }
 
         $post->update($data);
+
+
 
         return to_route('admin.post.show', $post)->with('message', 'Post modificato con successo')->with('type', 'success');
     }
